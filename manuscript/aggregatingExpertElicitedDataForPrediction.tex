@@ -1,7 +1,7 @@
 %\documentclass[twocolumn,secnumarabic,amssymb, nobibnotes, aps, pr,superscriptaddress]{revtex4-1}
 \documentclass[preprint,authoryear]{elsarticle}
 
-\journal{International Journal of Forecasting}
+\journal{WIREs-Computational Statistics}
 
 % common packages
 % ----------------------------------------
@@ -45,8 +45,6 @@
 \def \cw{\textbf{CW}}
 \def \ttw{\textbf{TTW}}
 
-
-
 % common latex functions
 % ----------------------------------------
 \def\l{\left}
@@ -89,7 +87,7 @@
 
    \begin{frontmatter}
 
-     \title{Aggregating predictions from experts: \\ a scoping review of statistical methods, experiments, and applications}
+     \title{Aggregating predictions from experts: \\ a review of statistical methods, experiments, and applications}
 
      \author[1]{Thomas~McAndrew \corref{cor1}}
      \ead{mcandrew@umass.edu}
@@ -97,7 +95,7 @@
      \author[1]{Nutcha~Wattanachit}
      \ead{nwattanachit@umass.edu}
 
-     \author[1]{G.~Casey~Gibson}
+     \author[1]{Graham~C.~Gibson}
      \ead{gcgibson@umass.edu}
      
      \author[1]{Nicholas~G.~Reich}
@@ -112,9 +110,9 @@
 \begin{abstract}
   Forecasts support decision making in a variety of applications.
   Statistical models can produce accurate forecasts given abundant training data, but when data is sparse, rapidly changing, or unavailable, statistical models may not be able to make accurate predictions.
-  Expert judgmental forecasts--—models that combine expert-generated predictions into a single forecast—--can make predictions when training data is limited by relying on expert intuition to take the place of concrete training data.
+  Expert judgmental forecasts--—models that combine expert-generated predictions into a single forecast—--can make predictions when training data is limited by relying on human intuition to take the place of concrete training data.
   Researchers have proposed a wide array of algorithms to combine expert predictions into a single forecast, but there is no consensus on an optimal aggregation model.
-  This scoping review surveyed recent literature on aggregating expert-elicited predictions.
+  This review surveyed recent literature on aggregating expert-elicited predictions.
   We gathered common terminology, aggregation methods, and forecasting performance metrics, and offer guidance to strengthen future work that is growing at an accelerated pace.
 \end{abstract}
 
@@ -150,19 +148,19 @@ In a data-sparse scenario, consensus requires the ability to solicit expert judg
 Research combining expert opinion to produce an aggregate forecast has grown rapidly, and a diverse group of disciplines apply combination forecasting techniques.
 Cross-communication between different applied areas of combination forecasting is minimal, and as a result, different scientific fields are working in parallel rather than together.
 The same mathematical ideas in combination forecasting are given different labels depending on application.
-For example, the literature refers to taking an equally-weighted average of expert forecasts as: equal-weighting, unweighted, and 50-50 weighting.
+For example, the literature refers to taking an equally-weighted average of expert forecasts as: equal-weighting~\cite{cooke2014out,hanea2018value,ISI:000327676900001}, unweighted~\cite{graefe2015accuracy}, and 50-50 weighting~\cite{alvarado2017expertise}.
 
 %Aggregation crowdsourcing
-This scoping review focuses on methods for aggregating expert judgments.
+This review focuses on methods for aggregating expert judgments.
 The aim is to survey the current state of expert combination forecasting literature, propose a single set of labels to frequently used mathematical details, look critically at how to improve expert combination forecasting research, and suggest future directions for the field. 
 
 We map key terminology used in combining expert judgemental forecasts and consolidate related definitions.
-A textual analysis of scoped articles highlights how combination forecasting techniques have evolved.
-A prespecified list of questions was asked of every in-scope manuscript: whether point predictions or predictive densities were elicited from experts, methods of aggregating expert predictions, experimental design for evaluating combination forecasts and how forecasts were scored (evaluated).
+A textual analysis of articles highlights how combination forecasting techniques have evolved.
+A prespecified list of questions was asked of every manuscript: whether point predictions or predictive densities were elicited from experts, methods of aggregating expert predictions, experimental design for evaluating combination forecasts and how forecasts were scored (evaluated).
 We tabulated techniques for evaluating forecasts and condensed terms referring to the same evaluative metric.
 
 Section~\ref{background} gives a brief historical background of combination forecasting and current challenges.
-Section~\ref{sec.methods} describes our literature search, how articles were defined as in-scope, and our analysis.
+Section~\ref{sec.methods} describes our literature search, how articles were included in our analysis set, and our analysis.
 Section~\ref{sec.results} reports results and section~\ref{sec.discussion} discusses common themes, terminology, advocates for key areas that need improvement, and recommends future directions for aggregating expert predictions.
 
 \section{Background}
@@ -210,7 +208,7 @@ Probabilistic densities can be thought of as more general than point forecasts.
 A point forecast can be derived from probabilistic forecast by taking, for example, the mean, median, or maximum a posteriori value.
 A probabilistic density assigning all probability mass to a single value can be considered a point forecast.
 
-A combination forecast aggregates predictions, either point or probabilistic, from a set of models and produces a single aggregate forecast~\citep{clemen1999combining,winkler1981combining,genest1986combining}.
+A combination forecast aggregates predictions, either point or probabilistic, from a set of models and produces a single aggregate forecast~\citep{clemen1999combining,winkler1981combining,genest1986combining,winkler2019probability}.
 Given a set of models $\mathcal{M}_{1},\mathcal{M}_{2},\cdots,\mathcal{M}_{N}$, a combination model $\mathcal{G}:\mathcal{M}_{1} \times \mathcal{M}_{2} \times \cdots \times \mathcal{M}_{N} \to \mathcal{F}$ maps the cartesian product of all models onto a single class of suitable probability distributions~\citep{gneiting2013combining}.
 The goal of combination forecasting is to find an optimal aggregation function $G \in \mathcal{G}$.
 Typically the model $\mathcal{G}$ is parameterized $\mathcal{G} = \l\{ G_{\upsilon} | \upsilon \in \Upsilon \r\} $ such that finding an optimal $G$ amounts to finding the parameter vector $\upsilon$ that produces an optimal forecast.
@@ -330,8 +328,8 @@ The search string entered into Web of Science on 2019-03-06 was \textbf{(expert*
 All articles from this search were entered into a database.
 Information in this article database included: the author list, title of article, year published, publishing journal, keywords, and abstract (full database can be found at \url{https://github.com/tomcm39/AggregatingExpertElicitedDataForPrediction}).
 
-To decide if an article was related to combining expert judgement, two randomly assigned reviewers (co-authors) read the abstract and were asked if the article was in or out of scope.
-We defined an article as in-scope if it elicited expert judgments and combined them to make a prediction about natural phenomena or a  future event.
+To decide if an article was related to combining expert judgement, two randomly assigned reviewers (co-authors) read the abstract and were asked if the article should be included for analysis (in-scope) or excluded (out of scope).
+We defined an article as in-scope if it elicited expert judgments and combined them to make a prediction about natural phenomena or a future event.
 An article moved to the next stage if both reviewers agreed the article was in-scope.
 If the two reviewers disagreed, the article was sent to a randomly assigned third reviewer to act as a tie breaker and was considered in scope if this third reviewer determined the article was in-scope.
 
@@ -379,7 +377,7 @@ Analysis-set articles were published in $34$ journals, and the top publishing jo
 Combination forecasting articles often emphasize the role of decision makers in forecasting, and
 these top-publishing journals sit at the intersection of forecasting and decision sciences.
 
-The top $10$ most frequent words found in articles' abstracts are related to our initial search: ``expert'',``judgment'', ``forecast'', ``combin'', and ``predict''.
+The top $10$ most frequent words found in articles' abstracts are related to our initial search: ``expert'',``judgment'', ``forecast'', ``combin*'', and ``predict''.
 Words related to modeling and methodology are also frequent: ``model'', ``method'', ``approach'', ``predict''.
 The word ``assess'' appears less frequently in abstracts and the word ``accuracy'' even less frequent~(Fig.~\ref{fig.wordFreq}).
 %
@@ -415,11 +413,13 @@ Public health papers predicted continuous targets over time, like forecasting ca
 
 Targets were often either too far in the future to assess, for example predicting precipitation changes in the next $1$ million years~\citep{zio1997accounting}, or related to a difficult-to-measure quantity, such as populations of animals with little or no monitoring~\cite{johnson2018making,borsuk2004predictive,mantyka2014understanding}.
 The majority of analysis-set articles placed more importance on the act of building a consensus distribution than studying the accuracy of the combined forecast~\citep{johnson2018making,cooke2014out,li2012preliminary,klas2010support,zio1997accounting,song2013combining,clemen2007advances,tartakovsky2007probabilistic,morgan2014use,borsuk2004predictive,kabak2008aggregating,cabello2012combination,adams2009acceptability,neves2008life,failing2004using,evans1994use,hora2015calibration,abramson1996hailfinder,hathout2016uncertainty,wang2008probabilistic,mantyka2014understanding,kurowicka2010probabilistic,zio1996use,brito2016bayesian,gu2016expert,mu1999multi,wang2018bayesian,shin2013robust,brito2012behavioral,baron2014two}.
+It is important to note the ability of experts to build forecasts and support decision-making with very little, or any, observed data on targets of interest.
 
 All articles defined a small number of specific forecasting targets.
 The majority of targets related to safety.
 Public health, ecology, and engineering applications focused on forecasting targets that, if left unchecked, could negatively impact human lives or the surrounding environment.
-What differed between articles was whether the forecasting target could be assessed, and if ground truth data was collected on targets.
+For example, carcinogenic risk imposed by the concentration of chloroform found in drinking water~\cite{evans1994use}.
+What differed between articles was whether ground truth data was collected on targets, or if no data was collected, that ground truth data could be collected in the near future.
 
 \subsection{Forecasting methodology}
 
@@ -429,7 +429,22 @@ Many papers focused on assessing risk~\citep{zio1997accounting,brito2016bayesian
 For example, the risk of losing autonomous underwater vehicles was modeled using a Bayesian approach that incorporated objective environmental data and subjective probabilities of loss solicited from experts~\citep{brito2016bayesian,brito2012behavioral}.
 Other papers assessed the impact of subsurface hydrology on water contamination~\citep{tartakovsky2007probabilistic}, the risk of structural deterioration~\cite{neves2008life}, and the economic risk associated with government expenditures~\cite{wang2018bayesian}.
 
-Bayesian methods involved beta-binomial models, decision trees, mixture distributions, or Bayesian belief networks.
+Bayesian methods involved beta-binomial models, Bayesian decision trees, mixture distributions, or Bayesian belief networks.
+For example, work by~\cite{zio1997accounting} used a linear pool to combine expert judgments.
+The probability density over the target of interest $x$ was defined as
+\begin{equation*}
+  f(\tilde{x}) = \sum_{e=1}^{E} w_{e} f_{e}\l( \tilde{x} | \mathcal{D} \r)
+\end{equation*}
+where $w_{e}$ is a weight assigned to each expert and $f_{e}\l( \tilde{x} | \mathcal{D} \r)$ is the probability expert $e$ places on $\tilde{x}$, having observed data $\mathcal{D}$.
+The goal is to find weights $w_{e}$ that optimize a loss function.
+They extended this linear pool model by assuming experts could observe different data based on the target of interest $x$.
+The new linear pool was defined as
+\begin{equation*}
+  f(\tilde{x}) = \sum_{e=1}^{E} g( \mathcal{D}_{e} | x ) f_{e}\l( \tilde{x} | \mathcal{D}_{e} \r)
+\end{equation*}
+where $g(\mathcal{D}_{e}|x)$ is the probability expert $e$ observed data $\mathcal{D}_{e}$.
+The goal is then to accurately compute $g( \mathcal{D}_{e} | x ) $ and use this probability density to weight experts.
+
 Often Bayesian models involved complicated posterior computations, requiring numerical integration to compute forecast probabilities.
 Past work suggested a Bayesian framework could better model subjective probabilities elicited from experts~\citep{clemen2007advances}, however Frequentist techniques were used in almost 50\% of articles. 
 
@@ -443,11 +458,19 @@ Both techniques are mentioned in analysis-set articles and rely on a Frequentist
 where $y$ represents the expert's forecast, $\mathcal{N}$ is a Normal distribution, $x_{e}$ is a vector of objective information about the target of interest, $\beta$ are estimated parameters, and $\sigma^{2}$ is argued to contain expert intuition.
 This model can then infer what covariates ($x_{e}$) are important to expert decision making and to what extent expert intuition ($\sigma^{2}$) is involved in prediction.
 
-Articles that did not use classic regression combined statistical predictions (called `crisp') with qualitative estimates made by experts using fuzzy logic.
+Articles that did not use classic regression combined statistical predictions with qualitative estimates made by experts using fuzzy logic~(an extension of traditional logic where elements can partially belong to many sets).
 Cooke's method inspired articles to take a mixture model approach and weighted experts based on how well they performed on a set of ground-truth questions.
 
 %neither 
 Articles using neither Bayesian or Frequentist models~\citep{johnson2018making,li2012preliminary,petrovic2006fuzzy,song2013combining,graefe2014accuracy,morgan2014use,cai2016simple,kabak2008aggregating,graefe2015accuracy,graefe2018predicting,failing2004using,ren2002optimal,hora2013median,baron2014two} resorted to: dynamical systems, simple averages of point estimates and quantiles from experts, and tree-based regression models.
+As a simplified example from~\cite{johnson2018making}, they aimed to predict the population of geese using a differential equation.
+The population of geese at time $t+1$~($N_{t+1}$) was modeled as
+\begin{equation*}
+  \f{d N_{t+1}}{dt} = N_{t}r\l[ 1 - \l(\f{N_{t}}{K}\r)^{\theta} \r] - h_{t}N_{t}
+\end{equation*}
+where probability distributions over parameters $r$, the intrinsic growth rate, $\theta$, the density dependence, and $h_{t}$, the harvest rate, could be estimated from data.
+To estimate the carrying capacity $K$, a probabilistic distribution was fit to expert judgments.
+A forecast of the geese population was generated by repeatedly sampling parameters $(r,\theta,h_{t},K)$ and integrating the differential equation.
 
 % non parametric and parametric
 The majority of models were parametric.
@@ -474,14 +497,14 @@ Formal metrics used in analysis-set articles are summarized in Table~\ref{tbl.me
 The articles that did not include a metric to compare forecast performance either did not compare combination forecasts to ground truth, evaluated forecasts by visual inspection, or measured success as the ability to combine expert-generated forecasts.
 Among articles that did evaluate forecasts, most articles focused on point estimates~(68\%, 15/22) versus probabilistic forecasts~(23\%, 5/22), and two articles did not focus on point or probabilistic forecasts from experts.
 
-The most commonly used metrics to evaluate point forecasts were: the Brier score, mean absolute (and percentage) error, and root mean square error.
+The most commonly used metrics to evaluate point forecasts were: the Brier score~(mean squared difference between the forecast and observed outcome), mean absolute (and percentage) error, and root mean square error.
 Even when predictive densities were combined, the majority of articles output and evaluated point estimates.
 
 A small number of articles combining probability distributions used metrics that evaluated aggregated forecasts based on density, not point forecasts.
 Expert forecasts were evaluated using relative entropy and a related metric, the calibration score~(see Table~\ref{tbl.metrics} for details).
 These metrics were first introduced by Cooke~\citep{cooke1988calibration,cooke1991experts}.
 
-The logscore is one of the most cited metrics for assessing calibration and sharpness~\citep{gneiting2007strictly,gneiting2011comparing,hora2015calibration} for predictive densities, but was not used in any of the analysis-set articles.
+The logscore is one of the most cited proper scoring rules for assessing calibration and sharpness~\citep{gneiting2007strictly,gneiting2011comparing,hora2015calibration} for predictive densities, but was not used in any of the analysis-set articles.
 Instead, analysis-set articles emphasized point estimates and used metrics to evaluate point forecasts.
 
 Three articles conducted an experiment but did not use any formal metrics to compare the results.
@@ -503,7 +526,7 @@ Data came from finance, business, economics, and management and predicted target
 In these articles, authors stress experts can add predictive power by introducing knowledge not used by statistical models, when the quality of data is suspect, and where decisions can have a major impact on outcomes. 
 The rapidly changing environment in these articles is caused by consumer/human behavior.
 
-Articles applied to politics stress that experts have poor accuracy when forecasting complex (and rapidly changing) systems unless they receive feedback about their forecast accuracy and have contextual information about the forecasting task~\citep{graefe2014accuracy,graefe2015accuracy,graefe2018predicting,satopaa2014probability}.
+Articles applied to politics stress that experts have poor accuracy when forecasting complex (and rapidly changing) systems unless they receive rapid feedback about their forecast accuracy and have contextual information about the forecasting task~\citep{graefe2014accuracy,graefe2015accuracy,graefe2018predicting,satopaa2014probability}.
 Political experts, it is argued, receive feedback by observing the outcome of elections and often have strong contextual knowledge about both candidates.  
 
 Weather and climate systems were also considered datasets that rapidly change.
@@ -549,12 +572,13 @@ Some studies did succeed to produce many more forecasts than recruited forecaste
 
 Combining expert predictions for forecasting continues to shows promise, however rigorous experiments that compare expert to non-expert and statistical forecasts are still needed to confirm the added value of expert judgement.
 The most useful application in the literature appeals to a mixture of statistical models and expert prediction when data is sparse and evolving.
-Despite the time and effort it takes to elicit expert-generated data, the wide range of applications and new methods show the field is growing.
+Despite the time, effort, and cost it takes to elicit expert-generated data, the wide range of applications and new methods show the field is growing.
 Authors also recognize the need to include human intuition into models that inform decision makers.
 
 In any combination forecast, built from expert or statistical predictions, there is no consensus on how to best combine individual forecasts or how to compare one forecast to another~(Table~\ref{tbl.metrics}).
 In addition to methodological disagreements familiar to any combination algorithm, expert judgemental forecasts have the additional burden of collecting predictions made by experts.
-The literature has not settled on how to define expertise and an entire field is devoted to understanding how experts differ from non-experts~\citep{dawid1995coherent,farrington2006nature,ericsson2007capturing,rikers2005recent,de2014thought}.
+Expertise is subjective and subject-specific, and the literature has not settled on how to define expertise.
+An entire field is devoted to understanding how experts differ from non-experts~\citep{dawid1995coherent,farrington2006nature,ericsson2007capturing,rikers2005recent,de2014thought}.
 Methods for collecting data from experts that are unbiased and in the least time-consuming manner is also an area of open inquiry.
 An investigator must spend time designing a strategy to collect data from experts, and experts themselves must make time to complete this prediction task. 
 There is a vast literature on proper techniques for collecting expert-generated data~\citep{ayyub2001elicitation,yousuf2007using,powell2003delphi,normand1998eliciting,leal2007eliciting,martin2012eliciting}.
@@ -596,11 +620,13 @@ In some cases visual inspection was used because ground truth data was not prese
 No manuscripts compared predictions between forecasts generated by experts only, a combination of experts and statistical models, and statistical models only.
 Past research is still unclear on the added value experts provide statistical forecasts, and whether expert-only models provide accurate results.
 
-To support research invested in aggregating expert predictions and improve their rigorous evaluation, we recommend the following: (i) future work spend more time on combining probabilistic densities and understanding the theoretical reasons simple aggregation techniques outperform more complicated models, and when appropriate (ii) authors define an appropriate metric to measure forecast accuracy and develop rigorous experiments to compare novel combination algorithms to existing methods.
+To support research invested in aggregating expert predictions and improve their rigorous evaluation, we recommend the following: (i) future work spend more time on combining probabilistic densities and understanding the theoretical reasons simple aggregation techniques outperform more complicated models, when appropriate (ii) authors define an appropriate metric to measure forecast accuracy and develop rigorous experiments to compare novel combination algorithms to existing methods.
 If not feasible we suggest a simulation study that enrolls a small, medium, and large number of experts to compare aggregation models.
+We also suggest (iii) authors carefully define expertise.
+Expertise should be defined in enough detail so that others can apply the same set of criteria to a novel pool of  potential judgmental forecasters.
 
 We recommend that the two goals of combining expert judgment begin to intersect.
-Historical models of meterological pheonomena, and more recent human-in-the-loop research point to more accurate and understandable models by involving experts/decision makers.
+Historical models of meteorological phenomena, and more recent human-in-the-loop research point to more accurate and understandable models by involving experts/decision makers.
 Current research, called `human-in-the-loop' machine learning, integrates human participants directly into a machine learning workflow and has shown positive performance in many different applications~\cite{cranor2008framework,holzinger2016interactive,yu2015lsun,li2017human}.
 Participants can select models and model parameters for training, evaluate the output, and create complicated models of their own.
 %The goal is to support decision making by involving the decision makers in the process of model creation.
@@ -608,20 +634,12 @@ As active participants, decision makers are able to build accurate models that, 
 %
 Weather forecasting is another example of a successful forecasting system by supporting close communication between forecasting models and decision makers~\cite{murphy1984probability,murphy1974probability,murphy1974subjective}.
 Forecasts are frequent, transparent about uncertainty, and provide meteorologist's a condensed model about the future they can rapidly compare to the truth.
-Parallels can be drawn to epidemiological forecasting~\cite{biggerstaff2016results,biggerstaff2018results,reich2019collaborative,mcgowan2019collaborative} and efforts to recognize decision makers as the end users.
-Recent work has developed a forecasting architecture for epidemic phenomena like seasonal influenza~\cite{reich2019collaborative}.
-The goal is to make frequent, weekly forecasts of seasonal influenza percentages, communicate uncertainty by making probabilistic statements about future incidence, and develop ensemble models that can summarize and help guide decision maker choices.
-Epidemiological forecasts are recognizing the importance of decision makers in the process by making frequent forecasts that give public health officials transparent information about the uncertainty of future incidence.
 We expect more research will explore how to build stronger forecasting systems by blending together the two combination forecasting goals of a more accurate forecast with a trusted consensus distribution.
+% Parallels can be drawn to epidemiological forecasting~\cite{biggerstaff2016results,biggerstaff2018results,reich2019collaborative,mcgowan2019collaborative} and efforts to recognize decision makers as the end users.
+% Recent work has developed a forecasting architecture for epidemic phenomena like seasonal influenza~\cite{reich2019collaborative}.
+% The goal is to make frequent, weekly forecasts of seasonal influenza percentages, communicate uncertainty by making probabilistic statements about future incidence, and develop ensemble models that can summarize and help guide decision maker choices.
+% Epidemiological forecasts are recognizing the importance of decision makers in the process by making frequent forecasts that give public health officials transparent information about the uncertainty of future incidence.
 
-% - recognizing and being transparent about quantifying uncertainty
-% - studies that investigated the use/value in general and specific decision making scenarios
-% - gave clear feedback to forecasts and decision makers using proper scoring rules
-% - forecasts as condensenced inforation to guide decision makers
-% - frequent forecasts, feedback fast, evaluation routine
-% - past data is useful
-% - forecasts are independent of the outcomes
-% - education
 
 Aggregating expert predictions can outperform statistical ensembles when data is sparse, or rapidly evolving.
 By making predictions, experts can gain insight into how forecasts are made, the assumptions implicit in forecasts, and ultimately how to best use the information forecasts provide to make critical decision about the future.
@@ -827,13 +845,12 @@ Whether the evaluative metric operates on a continuous or binary variable is sta
   \caption{ List of close-ended questions asked of each full-text article. Questions focus on the forecasting target, model, analysis data, and experimental design.\label{tab.prespecList}}
 \end{table}
 
-
 \graphicspath{{../_G/F1/}}
 \begin{figure*}[ht!]
   \centering
   \includegraphics[scale=1.0]{consortDiagram}
   \caption{
-A consort diagram for in-scope articles.
+A consort diagram that describes the path from collected to analysis-set article.
 The search term used to collect the initial set of articles is reported and all intermediate steps between initial and analysis-set articles. 
   \label{fig.consort}}
 \end{figure*}
@@ -844,7 +861,7 @@ The search term used to collect the initial set of articles is reported and all 
   \includegraphics[scale=0.65]{NumArticlesPublishedPerYear}
   \caption{
   The cumulative proportion~(A.) and individual number~(B.) of articles published per year.
-  The earliest in-scope article was published in $1992$ and most recent in $2018$.
+  The earliest analysis-set article was published in $1992$ and most recent in $2018$.
   A sharp increase in publication occurred at or near $2010$.
   \label{fig.yearPublished}}
 \end{figure*}
@@ -854,7 +871,7 @@ The search term used to collect the initial set of articles is reported and all 
   \centering
   \includegraphics[scale=0.65]{top5PercentWords}
   \caption{
-The top 5 percent most frequent words used in all in-scope abstracts.
+The top 5 percent most frequent words used in all analysis-set abstracts.
 Expert, forecast, and judgment are the most frequent and likely related to the search words used to collect these articles.
   \label{fig.wordFreq}}
 \end{figure*}
